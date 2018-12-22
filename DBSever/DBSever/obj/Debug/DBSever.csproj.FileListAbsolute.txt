@@ -1,0 +1,5 @@
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\bin\Debug\DBSever.dll
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\bin\Debug\DBSever.pdb
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\obj\Debug\DBSever.dll
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\obj\Debug\DBSever.pdb
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\obj\Debug\DBSever.csprojResolveAssemblyReference.cache

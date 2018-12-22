@@ -1,0 +1,5 @@
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\AES\AES\bin\Debug\AES.dll
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\AES\AES\bin\Debug\AES.pdb
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\AES\AES\obj\Debug\AES.dll
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\AES\AES\obj\Debug\AES.pdb
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\AES\AES\obj\Debug\AES.csprojResolveAssemblyReference.cache
