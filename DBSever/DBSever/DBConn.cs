@@ -135,6 +135,7 @@ namespace DBSever
             SqlDataReader dr = comm.ExecuteReader();
             if (dr.Read())
             {
+                dr.Close();
                 return "课号已被占用，不能重复登记";
             }
             dr.Close();
@@ -145,8 +146,10 @@ namespace DBSever
             }
             catch (Exception ex)
             {
+                dr.Close();
                 return ex.Message;
             }
+            dr.Close();
             return "开设课程成功";
 
         }
@@ -185,6 +188,7 @@ namespace DBSever
                 C.C_Year = dr["C_Year"].ToString();
                 //开设学期
                 C.C_Team = dr["C_Team"].ToString();
+                dr.Close();
                 return C;
             }
             dr.Close();
@@ -204,6 +208,7 @@ namespace DBSever
             SqlDataReader dr = comm.ExecuteReader();
             if (dr.Read())
             {
+                dr.Close();
                 strSQL = @"UPDATE [HrSystem].[dbo].[Course] SET
                                                [C_Num]='" + C.C_Num + @"'
                                                ,[C_Name]='" + C.C_Name + @"'
@@ -212,7 +217,7 @@ namespace DBSever
                                                ,[C_Year]='" + C.C_Year + @"'
                                                ,[C_Team]='" + C.C_Team + @"'
 
-                                     WHERE [C_Num] ='" + C.C_Num + @"'";
+                                     WHERE [C_Num] ='" + C.C_Num + "'";
 
                 comm = new SqlCommand(strSQL, conn);
                 try
@@ -222,12 +227,13 @@ namespace DBSever
                 }
                 catch (Exception ex)
                 {
+                    
                     return ex.Message;
                 }
-                dr.Close();
+                
                 return "课程信息修改成功";
             }
-            dr.Close();
+            
             return "课号信息有误，不存在该课程";
         }
     }
