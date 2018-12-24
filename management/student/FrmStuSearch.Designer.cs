@@ -79,7 +79,7 @@
             // 
             // C_score
             // 
-            this.C_score.DataPropertyName = "(C_Score";
+            this.C_score.DataPropertyName = "C_Score";
             this.C_score.HeaderText = "学分";
             this.C_score.Name = "C_score";
             this.C_score.ToolTipText = "学分";
@@ -93,7 +93,7 @@
             // 
             // C_term
             // 
-            this.C_term.DataPropertyName = "C_Term";
+            this.C_term.DataPropertyName = "C_Team";
             this.C_term.HeaderText = "开设学期";
             this.C_term.Name = "C_term";
             this.C_term.ToolTipText = "开设学期";
