@@ -41,6 +41,8 @@
             this.txtC_term = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.DelBtn = new System.Windows.Forms.Button();
+            this.changeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -48,9 +50,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(109, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "课号";
             // 
             // txtC_num
             // 
@@ -58,6 +60,7 @@
             this.txtC_num.Name = "txtC_num";
             this.txtC_num.Size = new System.Drawing.Size(100, 20);
             this.txtC_num.TabIndex = 1;
+            this.txtC_num.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtC_num_KeyDown);
             // 
             // txtC_score
             // 
@@ -69,11 +72,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 107);
+            this.label2.Location = new System.Drawing.Point(101, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.label2.Text = "课程名称";
             // 
             // txtC_name
             // 
@@ -87,9 +90,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(109, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "label3";
+            this.label3.Text = "学时";
             // 
             // txt_C_time
             // 
@@ -103,9 +106,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(109, 185);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "label4";
+            this.label4.Text = "学分";
             // 
             // txtC_year
             // 
@@ -117,11 +120,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(109, 232);
+            this.label5.Location = new System.Drawing.Point(101, 225);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 8;
-            this.label5.Text = "label5";
+            this.label5.Text = "开设学年";
             // 
             // txtC_term
             // 
@@ -133,27 +136,48 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(109, 270);
+            this.label6.Location = new System.Drawing.Point(101, 270);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(55, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "label6";
+            this.label6.Text = "开设学期";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(138, 332);
+            this.button1.Location = new System.Drawing.Point(87, 309);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 31);
+            this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
+            this.button1.Text = "添加";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // DelBtn
+            // 
+            this.DelBtn.Location = new System.Drawing.Point(237, 309);
+            this.DelBtn.Name = "DelBtn";
+            this.DelBtn.Size = new System.Drawing.Size(75, 23);
+            this.DelBtn.TabIndex = 13;
+            this.DelBtn.Text = "删除";
+            this.DelBtn.UseVisualStyleBackColor = true;
+            // 
+            // changeBtn
+            // 
+            this.changeBtn.Location = new System.Drawing.Point(162, 309);
+            this.changeBtn.Name = "changeBtn";
+            this.changeBtn.Size = new System.Drawing.Size(69, 23);
+            this.changeBtn.TabIndex = 14;
+            this.changeBtn.Text = "修改";
+            this.changeBtn.UseVisualStyleBackColor = true;
+            this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
             // 
             // AddCrouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 464);
+            this.Controls.Add(this.changeBtn);
+            this.Controls.Add(this.DelBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtC_term);
             this.Controls.Add(this.label6);
@@ -167,6 +191,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtC_num);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "AddCrouse";
             this.Text = "AddCrouse";
             this.Load += new System.EventHandler(this.AddCrouse_Load);
@@ -190,5 +215,7 @@
         private System.Windows.Forms.TextBox txtC_term;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button DelBtn;
+        private System.Windows.Forms.Button changeBtn;
     }
 }
