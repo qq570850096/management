@@ -28,129 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.Crouse = new System.Windows.Forms.DataGridView();
+            this.C_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_term = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.Crouse)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // Crouse
             // 
-            this.button1.Location = new System.Drawing.Point(79, 279);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Crouse.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Crouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.Crouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.C_num,
+            this.C_name,
+            this.C_time,
+            this.C_score,
+            this.C_year,
+            this.C_term});
+            this.Crouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Crouse.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Crouse.Location = new System.Drawing.Point(0, 0);
+            this.Crouse.Name = "Crouse";
+            this.Crouse.Size = new System.Drawing.Size(537, 490);
+            this.Crouse.TabIndex = 0;
             // 
-            // label1
+            // C_num
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 178);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "在此输入要查询学生的学号或姓名";
+            this.C_num.DataPropertyName = "C_Num";
+            this.C_num.HeaderText = "课号";
+            this.C_num.Name = "C_num";
+            this.C_num.ToolTipText = "课号";
             // 
-            // label2
+            // C_name
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(263, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "结果";
+            this.C_name.DataPropertyName = "C_Name";
+            this.C_name.HeaderText = "课程名称";
+            this.C_name.Name = "C_name";
+            this.C_name.ToolTipText = "课程名称";
             // 
-            // textBox1
+            // C_time
             // 
-            this.textBox1.Location = new System.Drawing.Point(68, 221);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.C_time.DataPropertyName = "C_Time";
+            this.C_time.HeaderText = "学时";
+            this.C_time.Name = "C_time";
+            this.C_time.ToolTipText = "学时";
             // 
-            // label3
+            // C_score
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(382, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "label3";
+            this.C_score.DataPropertyName = "(C_Score";
+            this.C_score.HeaderText = "学分";
+            this.C_score.Name = "C_score";
+            this.C_score.ToolTipText = "学分";
             // 
-            // label4
+            // C_year
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(382, 117);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "label4";
+            this.C_year.DataPropertyName = "C_Year";
+            this.C_year.HeaderText = "开设学年";
+            this.C_year.Name = "C_year";
+            this.C_year.ToolTipText = "开设学年";
             // 
-            // label5
+            // C_term
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(382, 158);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(382, 209);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "label6";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(382, 263);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "label7";
+            this.C_term.DataPropertyName = "C_Term";
+            this.C_term.HeaderText = "开设学期";
+            this.C_term.Name = "C_term";
+            this.C_term.ToolTipText = "开设学期";
             // 
             // FrmStuSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 490);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Crouse);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmStuSearch";
             this.Text = "FrmStuSearch";
             this.Load += new System.EventHandler(this.FrmStuSearch_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.Crouse)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView Crouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_score;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_year;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_term;
+
     }
 }

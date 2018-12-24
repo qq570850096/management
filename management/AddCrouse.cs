@@ -20,14 +20,12 @@ namespace management
 
         private void AddCrouse_Load(object sender, EventArgs e)
         {
-            DBSever.crouse crouse = new crouse();
-
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DBSever.crouse crouse = new crouse();
+            crouse crouse = new crouse();
             //学号
             crouse.C_Num = txtC_num.Text.Trim();
             //课程名称

@@ -143,5 +143,18 @@ namespace DBSever
             return "开设课程成功";
  
         }
+        public DataTable SC()
+        {
+            DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
+            SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
+            string strSQL = "select * from [dbo].[Course]";
+            
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+            da.Fill(ds, "Course");//填充数据源
+            dt = ds.Tables["Course"];//获取数据源中的表
+            return dt;
+        }
     }
 }
