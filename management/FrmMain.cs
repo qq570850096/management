@@ -32,6 +32,12 @@ namespace management
             SSearch.Show(dockPanel);
         }
 
+        private void 添加学生ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddCrouse AC = new AddCrouse();
+            AC.Show(dockPanel);
+        }
+
         
     }
 }
