@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace DBSever
 {
     public class DBConn
@@ -14,7 +15,6 @@ namespace DBSever
         public SqlConnection OpenConn()
         {
             //创建连接
-
             SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
             scsb.DataSource = "localhost";
             scsb.UserID = "sa";
@@ -86,79 +86,39 @@ namespace DBSever
             return "注册成功！";
         }
     }
-    //model对象
-    //对应的是表中的属性
-    public class student
+    
+    //接口泛型化
+    interface InterCour<T>
     {
-        public string stu_num { get; set; }
-        public string stu_name { get; set; }
+        //接口成员增删改查
+       string AddC(T C);
+       DataTable SC();
+       string upC(T C);
+       Course SelectC(T C);
+       string Del(T C);
+       DataSet DS();
     }
-    public class crouse
+    public class InterC : InterCour<Course>
     {
-        public string C_Num { get; set; }
-
-        public string C_Name { get; set; }
-
-        public string C_Time { get; set; }
-
-        public string C_Score { get; set; }
-
-        public string C_Year { get; set; }
-
-        public string C_Team { get; set; }
-
-        public string AddCrouse(crouse C)
+        public string AddC(Course C)
         {
-            //拼接T_SQL语句
-            string strSQL = @"INSERT INTO [HrSystem].[dbo].[Course]
-                                               ([C_Num]
-                                               ,[C_Name]
-                                               ,[C_Time]
-                                               ,[C_Score]
-                                               ,[C_Year]
-                                               ,[C_Team])
-
-                                     VALUES
-                                           ('" + C.C_Num + @"'
-                                           ,'" + C.C_Name + @"'
-                                           ,'" + C.C_Time + @"'
-                                           ,'" + C.C_Score + @"'
-                                            ,'" + C.C_Year + @"'
-                                            ,'" + C.C_Team + @"'
-                                           )";
-            //执行SQL语句
-            DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
-            SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
-
-
-            SqlCommand comm = new SqlCommand(strSQL, conn);//实例化SQLcommand对象
-            SqlDataReader dr = comm.ExecuteReader();
-            if (dr.Read())
-            {
-                dr.Close();
-                return "课号已被占用，不能重复登记";
-            }
-            dr.Close();
+            DataClasses1DataContext DC = new DataClasses1DataContext();
+            DC.Course.InsertOnSubmit(C);
             try
             {
-                int row_count = comm.ExecuteNonQuery();//执行Sql语句，并接受返回受影响的行数
-
+                DC.SubmitChanges();
             }
             catch (Exception ex)
             {
-                dr.Close();
                 return ex.Message;
             }
-            dr.Close();
-            return "开设课程成功";
-
+            return "添加课程成功！";
         }
         public DataTable SC()
         {
             DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
             SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
-            string strSQL = "select * from [dbo].[Course]";
-
+            string strSQL = "select * from [dbo].[Course] inner join CNatu on CNatu.C_Num = Course.C_Num";
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
@@ -166,75 +126,74 @@ namespace DBSever
             dt = ds.Tables["Course"];//获取数据源中的表
             return dt;
         }
-        public crouse SelectC(crouse C)
+        public Course SelectC(Course C)
         {
-            DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
-            SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
-            string strSQL = "select * from [dbo].[Course] where C_Num='" + C.C_Num + "'";
-            //执行Sql语句
-            SqlCommand comm = new SqlCommand(strSQL, conn);
-            SqlDataReader dr = comm.ExecuteReader();//执行sql语句，返回受影响的行数
-            if (dr.Read())//如果能够前进到下一条记录，就说明有数据
+            DataClasses1DataContext DC = new DataClasses1DataContext();
+            var q = DC.Course.Where(p => p.C_Num == C.C_Num);
+            if (q.Count() > 0)
             {
-                //学号
-                C.C_Num = dr["C_Num"].ToString();
-                //课程名称
-                C.C_Name = dr["C_Name"].ToString();
-                //学时
-                C.C_Time = dr["C_Time"].ToString();
-                //学分
-                C.C_Score = dr["C_Score"].ToString();
-                //开设学年
-                C.C_Year = dr["C_Year"].ToString();
-                //开设学期
-                C.C_Team = dr["C_Team"].ToString();
-                dr.Close();
+                C = q.First();
                 return C;
             }
-            dr.Close();
-
-            return null;
+            else
+                return null;
         }
-        public string upC(crouse C)
+        public string upC(Course C)
         {
-            //拼接T_SQL语句
-
-            //执行SQL语句
-            DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
-            SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
-            string strSQL = "select * from [dbo].[Course] where C_Num='" + C.C_Num + "'";
-
-            SqlCommand comm = new SqlCommand(strSQL, conn);//实例化SQLcommand对象
-            SqlDataReader dr = comm.ExecuteReader();
-            if (dr.Read())
+            DataClasses1DataContext DC = new DataClasses1DataContext();
+            var q = DC.Course.Where(p => p.C_Num == C.C_Num);
+            if (q!= null)
             {
-                dr.Close();
-                strSQL = @"UPDATE [HrSystem].[dbo].[Course] SET
-                                               [C_Num]='" + C.C_Num + @"'
-                                               ,[C_Name]='" + C.C_Name + @"'
-                                               ,[C_Time]='" + C.C_Time + @"'
-                                               ,[C_Score]='" + C.C_Score + @"'
-                                               ,[C_Year]='" + C.C_Year + @"'
-                                               ,[C_Team]='" + C.C_Team + @"'
-
-                                     WHERE [C_Num] ='" + C.C_Num + "'";
-
-                comm = new SqlCommand(strSQL, conn);
+                q.First().C_Name = C.C_Name;
+                q.First().C_Score = C.C_Score;
+                q.First().C_Team = C.C_Team;
+                q.First().C_Year = C.C_Year;
+                q.First().C_Time = C.C_Time;
+                DC.SubmitChanges();
+                return "课程信息修改成功！";
+            }
+            else
+                return "课号信息有误，不存在该课程";
+        }
+        public string Del(Course C)
+        {
+            DataClasses1DataContext DC = new DataClasses1DataContext();
+            var q = DC.Course.Where(p => p.C_Num == C.C_Num);
+            if (q.Count() > 0)
+            {
                 try
                 {
-                    int row_count = comm.ExecuteNonQuery();//执行Sql语句，并接受返回受影响的行数
-
+                    Course data = q.First();
+                    DC.Course.DeleteOnSubmit(data);
+                    DC.SubmitChanges();
                 }
                 catch (Exception ex)
                 {
-                    
                     return ex.Message;
                 }
-                
-                return "课程信息修改成功";
+                return "已成功删除课程";
             }
-            
-            return "课号信息有误，不存在该课程";
+            else
+                return "该课程不存在，请检查课号是否错误";
+        }
+        public DataSet DS()
+        {
+            DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
+            SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
+            string strSQL = "select * from Course";
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+            da.Fill(ds, "Course");
+            strSQL = "select * from Teacher";
+            da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+            da.Fill(ds, "Teacher");
+            strSQL = "select * from Organization";
+            da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+            da.Fill(ds, "Organization");
+            strSQL = "select * from Student";
+            da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+            da.Fill(ds, "Student");
+            return ds;
         }
     }
 }

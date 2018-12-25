@@ -35,6 +35,11 @@
             this.C_score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_term = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Crouse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,11 +54,12 @@
             this.C_score,
             this.C_year,
             this.C_term});
-            this.Crouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Crouse.Dock = System.Windows.Forms.DockStyle.Top;
             this.Crouse.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Crouse.Location = new System.Drawing.Point(0, 0);
             this.Crouse.Name = "Crouse";
-            this.Crouse.Size = new System.Drawing.Size(537, 490);
+            this.Crouse.RowTemplate.Height = 23;
+            this.Crouse.Size = new System.Drawing.Size(537, 311);
             this.Crouse.TabIndex = 0;
             // 
             // C_num
@@ -98,11 +104,65 @@
             this.C_term.Name = "C_term";
             this.C_term.ToolTipText = "开设学期";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 343);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(172, 343);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "查看课程性质";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(317, 343);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "添加";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(172, 415);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(89, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "删除";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(317, 415);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(89, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "保存";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // FrmStuSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 490);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Crouse);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmStuSearch";
@@ -116,12 +176,17 @@
         #endregion
 
         private System.Windows.Forms.DataGridView Crouse;
+        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_score;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_year;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_term;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
 
     }
 }

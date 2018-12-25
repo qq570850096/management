@@ -43,6 +43,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.DelBtn = new System.Windows.Forms.Button();
             this.changeBtn = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.RB1 = new System.Windows.Forms.RadioButton();
+            this.RB2 = new System.Windows.Forms.RadioButton();
+            this.RB3 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -144,7 +149,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(87, 309);
+            this.button1.Location = new System.Drawing.Point(87, 400);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 12;
@@ -154,16 +159,17 @@
             // 
             // DelBtn
             // 
-            this.DelBtn.Location = new System.Drawing.Point(237, 309);
+            this.DelBtn.Location = new System.Drawing.Point(237, 400);
             this.DelBtn.Name = "DelBtn";
             this.DelBtn.Size = new System.Drawing.Size(75, 23);
             this.DelBtn.TabIndex = 13;
             this.DelBtn.Text = "删除";
             this.DelBtn.UseVisualStyleBackColor = true;
+            this.DelBtn.Click += new System.EventHandler(this.DelBtn_Click);
             // 
             // changeBtn
             // 
-            this.changeBtn.Location = new System.Drawing.Point(162, 309);
+            this.changeBtn.Location = new System.Drawing.Point(162, 400);
             this.changeBtn.Name = "changeBtn";
             this.changeBtn.Size = new System.Drawing.Size(69, 23);
             this.changeBtn.TabIndex = 14;
@@ -171,11 +177,66 @@
             this.changeBtn.UseVisualStyleBackColor = true;
             this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(162, 336);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(101, 344);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "任课教师";
+            // 
+            // RB1
+            // 
+            this.RB1.AutoSize = true;
+            this.RB1.Location = new System.Drawing.Point(112, 301);
+            this.RB1.Name = "RB1";
+            this.RB1.Size = new System.Drawing.Size(61, 17);
+            this.RB1.TabIndex = 20;
+            this.RB1.TabStop = true;
+            this.RB1.Text = "必修课";
+            this.RB1.UseVisualStyleBackColor = true;
+            // 
+            // RB2
+            // 
+            this.RB2.AutoSize = true;
+            this.RB2.Location = new System.Drawing.Point(179, 301);
+            this.RB2.Name = "RB2";
+            this.RB2.Size = new System.Drawing.Size(61, 17);
+            this.RB2.TabIndex = 21;
+            this.RB2.TabStop = true;
+            this.RB2.Text = "选修课";
+            this.RB2.UseVisualStyleBackColor = true;
+            // 
+            // RB3
+            // 
+            this.RB3.AutoSize = true;
+            this.RB3.Location = new System.Drawing.Point(251, 301);
+            this.RB3.Name = "RB3";
+            this.RB3.Size = new System.Drawing.Size(61, 17);
+            this.RB3.TabIndex = 22;
+            this.RB3.TabStop = true;
+            this.RB3.Text = "实践课";
+            this.RB3.UseVisualStyleBackColor = true;
+            // 
             // AddCrouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 464);
+            this.Controls.Add(this.RB3);
+            this.Controls.Add(this.RB2);
+            this.Controls.Add(this.RB1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.changeBtn);
             this.Controls.Add(this.DelBtn);
             this.Controls.Add(this.button1);
@@ -194,7 +255,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "AddCrouse";
             this.Text = "AddCrouse";
-            this.Load += new System.EventHandler(this.AddCrouse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +277,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button DelBtn;
         private System.Windows.Forms.Button changeBtn;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton RB1;
+        private System.Windows.Forms.RadioButton RB2;
+        private System.Windows.Forms.RadioButton RB3;
     }
 }

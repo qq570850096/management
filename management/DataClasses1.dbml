@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HrSystem" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=HrSystem;Persist Security Info=True;User ID=sa" SettingsObjectName="management.Properties.Settings" SettingsPropertyName="HrSystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ActCha" Member="ActCha">
+    <Type Name="ActCha">
+      <Column Name="ActCha_Num" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ActCha_Name" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Association Name="ActCha_OrgAct" Member="OrgAct" ThisKey="ActCha_Num" OtherKey="ActCha_Num" Type="OrgAct" />
+    </Type>
+  </Table>
+  <Table Name="dbo.activity" Member="activity">
+    <Type Name="activity">
+      <Column Name="Org_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrgAct_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="OrgAct_activity" Member="OrgAct" ThisKey="OrgAct_Num" OtherKey="OrgAct_Num" Type="OrgAct" IsForeignKey="true" />
+      <Association Name="Organization_activity" Member="Organization" ThisKey="Org_Num" OtherKey="Org_Num" Type="Organization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CNatu" Member="CNatu">
+    <Type Name="CNatu">
+      <Column Name="CNat_Num" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="C_Num" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="CNat_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Course_CNatu" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ColCha" Member="ColCha">
+    <Type Name="ColCha">
+      <Column Name="ColCha_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ColCha_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Association Name="ColCha_College" Member="College" ThisKey="ColCha_Num" OtherKey="ColCha_Num" Type="College" />
+    </Type>
+  </Table>
+  <Table Name="dbo.College" Member="College">
+    <Type Name="College">
+      <Column Name="Col_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ColCha_Num" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="Col_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Col_City" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Association Name="College_Faulty" Member="Faulty" ThisKey="Col_Num" OtherKey="Col_Num" Type="Faulty" />
+      <Association Name="ColCha_College" Member="ColCha" ThisKey="ColCha_Num" OtherKey="ColCha_Num" Type="ColCha" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cou_teaching" Member="cou_teaching">
+    <Type Name="cou_teaching">
+      <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="教师代码" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Course_cou_teaching" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
+      <Association Name="Teacher_cou_teaching" Member="Teacher" ThisKey="教师代码" OtherKey="T_Num" Type="Teacher" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Course" Member="Course">
+    <Type Name="Course">
+      <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="C_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="C_Time" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Score" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Year" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="C_Team" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="Course_CNatu" Member="CNatu" ThisKey="C_Num" OtherKey="C_Num" Type="CNatu" />
+      <Association Name="Course_cou_teaching" Member="cou_teaching" ThisKey="C_Num" OtherKey="C_Num" Type="cou_teaching" />
+      <Association Name="Course_SC" Member="SC" ThisKey="C_Num" OtherKey="C_Num" Type="SC" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Faulty" Member="Faulty">
+    <Type Name="Faulty">
+      <Column Name="Fac_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Col_Num" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="Fac_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Fac_Dean" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Fac_EN" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Fac_Int" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Association Name="Faulty_Major" Member="Major" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Major" />
+      <Association Name="Faulty_Organization" Member="Organization" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Organization" />
+      <Association Name="Faulty_Teacher" Member="Teacher" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Teacher" />
+      <Association Name="College_Faulty" Member="College" ThisKey="Col_Num" OtherKey="Col_Num" Type="College" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Job">
+    <Type Name="Job">
+      <Column Name="J_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="J_Name" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Association Name="Job_Teacher" Member="Teacher" ThisKey="J_Num" OtherKey="J_Num" Type="Teacher" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Major" Member="Major">
+    <Type Name="Major">
+      <Column Name="M_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fac_Num" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="M_Name" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="M_Intro" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="M_EName" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Association Name="Major_Student" Member="Student" ThisKey="M_Num" OtherKey="M_Num" Type="Student" />
+      <Association Name="Major_Teacher" Member="Teacher" ThisKey="M_Num" OtherKey="M_Num" Type="Teacher" />
+      <Association Name="Faulty_Major" Member="Faulty" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Faulty" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.offered" Member="offered">
+    <Type Name="offered">
+      <Column Name="S_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Org_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Organization_offered" Member="Organization" ThisKey="Org_Num" OtherKey="Org_Num" Type="Organization" IsForeignKey="true" />
+      <Association Name="Student_offered" Member="Student" ThisKey="S_Num" OtherKey="S_Num" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrgAct" Member="OrgAct">
+    <Type Name="OrgAct">
+      <Column Name="OrgAct_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ActCha_Num" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="OrgAct_Name" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="OrgAct_StaT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrgAct_EndT" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrgAct_Lead" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Association Name="OrgAct_activity" Member="activity" ThisKey="OrgAct_Num" OtherKey="OrgAct_Num" Type="activity" />
+      <Association Name="ActCha_OrgAct" Member="ActCha" ThisKey="ActCha_Num" OtherKey="ActCha_Num" Type="ActCha" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Organization" Member="Organization">
+    <Type Name="Organization">
+      <Column Name="Org_Num" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrgCha_Num" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="T_Num" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="OrgGra_Num" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="Fac_Num" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="Org_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Org_CreTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Organization_activity" Member="activity" ThisKey="Org_Num" OtherKey="Org_Num" Type="activity" />
+      <Association Name="Organization_offered" Member="offered" ThisKey="Org_Num" OtherKey="Org_Num" Type="offered" />
+      <Association Name="Faulty_Organization" Member="Faulty" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Faulty" IsForeignKey="true" />
+      <Association Name="OrgCha_Organization" Member="OrgCha" ThisKey="OrgCha_Num" OtherKey="OrgCha_Num" Type="OrgCha" IsForeignKey="true" />
+      <Association Name="OrgGra_Organization" Member="OrgGra" ThisKey="OrgGra_Num" OtherKey="OrgGra_Num" Type="OrgGra" IsForeignKey="true" />
+      <Association Name="Teacher_Organization" Member="Teacher" ThisKey="T_Num" OtherKey="T_Num" Type="Teacher" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrgCha" Member="OrgCha">
+    <Type Name="OrgCha">
+      <Column Name="OrgCha_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrgCha_Name" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="OrgCha_Organization" Member="Organization" ThisKey="OrgCha_Num" OtherKey="OrgCha_Num" Type="Organization" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrgGra" Member="OrgGra">
+    <Type Name="OrgGra">
+      <Column Name="OrgGra_Num" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrgGra_Name" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Association Name="OrgGra_Organization" Member="Organization" ThisKey="OrgGra_Num" OtherKey="OrgGra_Num" Type="Organization" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Politics" Member="Politics">
+    <Type Name="Politics">
+      <Column Name="P_Num" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="P_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Politics_Student" Member="Student" ThisKey="P_Num" OtherKey="P_Num" Type="Student" />
+      <Association Name="Politics_Teacher" Member="Teacher" ThisKey="P_Num" OtherKey="P_Num" Type="Teacher" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SC" Member="SC">
+    <Type Name="SC">
+      <Column Name="S_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Grade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Course_SC" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
+      <Association Name="Student_SC" Member="Student" ThisKey="S_Num" OtherKey="S_Num" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Student">
+    <Type Name="Student">
+      <Column Name="S_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="M_Num" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="P_Num" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="S_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="S_Birth" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="S_Sex" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="S_Place" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="S_Grade" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Student_offered" Member="offered" ThisKey="S_Num" OtherKey="S_Num" Type="offered" />
+      <Association Name="Student_SC" Member="SC" ThisKey="S_Num" OtherKey="S_Num" Type="SC" />
+      <Association Name="Major_Student" Member="Major" ThisKey="M_Num" OtherKey="M_Num" Type="Major" IsForeignKey="true" />
+      <Association Name="Politics_Student" Member="Politics" ThisKey="P_Num" OtherKey="P_Num" Type="Politics" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teacher" Member="Teacher">
+    <Type Name="Teacher">
+      <Column Name="T_Num" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="M_Num" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="P_Num" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Fac_Num" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="J_Num" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="T_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="T_Sex" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="T_Birthday" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="T_Nation" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Teacher_cou_teaching" Member="cou_teaching" ThisKey="T_Num" OtherKey="教师代码" Type="cou_teaching" />
+      <Association Name="Teacher_Organization" Member="Organization" ThisKey="T_Num" OtherKey="T_Num" Type="Organization" />
+      <Association Name="Major_Teacher" Member="Major" ThisKey="M_Num" OtherKey="M_Num" Type="Major" IsForeignKey="true" />
+      <Association Name="Job_Teacher" Member="Job" ThisKey="J_Num" OtherKey="J_Num" Type="Job" IsForeignKey="true" />
+      <Association Name="Faulty_Teacher" Member="Faulty" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Faulty" IsForeignKey="true" />
+      <Association Name="Politics_Teacher" Member="Politics" ThisKey="P_Num" OtherKey="P_Num" Type="Politics" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.userinfo" Member="userinfo">
+    <Type Name="userinfo">
+      <Column Name="user_id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="user_pwd" Type="System.String" DbType="NVarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="ip_addr" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="mac_addr" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="last_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="last_ip" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
