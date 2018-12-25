@@ -13,6 +13,7 @@ namespace management
 {
     public partial class FrmStuSearch : DockContent
     {
+        InterC ic = new InterC();
         public FrmStuSearch()
         {
             InitializeComponent();
@@ -20,8 +21,15 @@ namespace management
 
         private void FrmStuSearch_Load(object sender, EventArgs e)
         {
-            crouse C = new crouse();
-            DataTable dt = C.SC();
+            DBSever.Course D = new DBSever.Course();
+            DataTable dt = ic.SC();
+            Crouse.DataSource = dt.DefaultView;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DBSever.Course D = new DBSever.Course();
+            DataTable dt = ic.SC();
             Crouse.DataSource = dt.DefaultView;
         }
 

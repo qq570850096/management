@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace management.Properties {
+namespace DBSever.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

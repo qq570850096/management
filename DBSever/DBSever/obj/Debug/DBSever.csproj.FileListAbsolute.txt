@@ -3,3 +3,10 @@ C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\b
 C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\obj\Debug\DBSever.dll
 C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\obj\Debug\DBSever.pdb
 C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\obj\Debug\DBSever.csprojResolveAssemblyReference.cache
+C:\Users\exia\Documents\Visual Studio 2010\Projects\management\DBSever\DBSever\bin\Debug\DBSever.dll.config
+C:\management\management\DBSever\DBSever\obj\Debug\ResolveAssemblyReference.cache
+C:\management\management\DBSever\DBSever\obj\Debug\DBSever.dll
+C:\management\management\DBSever\DBSever\obj\Debug\DBSever.pdb
+C:\management\management\DBSever\DBSever\bin\Debug\DBSever.dll.config
+C:\management\management\DBSever\DBSever\bin\Debug\DBSever.dll
+C:\management\management\DBSever\DBSever\bin\Debug\DBSever.pdb

@@ -18,3 +18,24 @@ C:\Users\exia\documents\visual studio 2010\Projects\management\management\obj\x8
 C:\Users\exia\documents\visual studio 2010\Projects\management\management\bin\Debug\DBSever.dll
 C:\Users\exia\documents\visual studio 2010\Projects\management\management\bin\Debug\DBSever.pdb
 C:\Users\exia\Documents\Visual Studio 2010\Projects\management\management\obj\x86\Debug\management.AddCrouse.resources
+C:\management\management\management\bin\Debug\management.exe.config
+C:\management\management\management\obj\x86\Debug\management.exe
+C:\management\management\management\obj\x86\Debug\management.pdb
+C:\management\management\management\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\management\management\management\obj\x86\Debug\management.AddCrouse.resources
+C:\management\management\management\obj\x86\Debug\management.FrmHome.resources
+C:\management\management\management\obj\x86\Debug\management.FrmLogin.resources
+C:\management\management\management\obj\x86\Debug\management.FrmMain.resources
+C:\management\management\management\obj\x86\Debug\management.FrmMenu.resources
+C:\management\management\management\obj\x86\Debug\management.frmReg.resources
+C:\management\management\management\obj\x86\Debug\management.Properties.Resources.resources
+C:\management\management\management\obj\x86\Debug\management.FrmStuSearch.resources
+C:\management\management\management\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\management\management\management\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\management\management\management\bin\Debug\management.exe
+C:\management\management\management\bin\Debug\management.pdb
+C:\management\management\management\bin\Debug\AES.dll
+C:\management\management\management\bin\Debug\DBSever.dll
+C:\management\management\management\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+C:\management\management\management\bin\Debug\AES.pdb
+C:\management\management\management\bin\Debug\DBSever.pdb

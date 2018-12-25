@@ -35,6 +35,7 @@
             this.C_score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_term = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Crouse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.Crouse.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Crouse.Location = new System.Drawing.Point(0, 0);
             this.Crouse.Name = "Crouse";
+            this.Crouse.RowTemplate.Height = 23;
             this.Crouse.Size = new System.Drawing.Size(537, 490);
             this.Crouse.TabIndex = 0;
             // 
@@ -98,11 +100,22 @@
             this.C_term.Name = "C_term";
             this.C_term.ToolTipText = "开设学期";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 445);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmStuSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 490);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Crouse);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "FrmStuSearch";
@@ -122,6 +135,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn C_score;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_year;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_term;
+        private System.Windows.Forms.Button button1;
 
     }
 }
