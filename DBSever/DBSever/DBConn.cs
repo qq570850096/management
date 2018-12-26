@@ -178,21 +178,30 @@ namespace DBSever
         }
         public DataSet DS()
         {
+            DataClasses1DataContext DC = new DataClasses1DataContext();
+            var tables = from t in DC.Mapping.GetTables() orderby t.TableName select t;
             DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
             SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
-            string strSQL = "select * from Course";
+            string strSQL = "";
             DataSet ds = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
-            da.Fill(ds, "Course");
-            strSQL = "select * from Teacher";
-            da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
-            da.Fill(ds, "Teacher");
-            strSQL = "select * from Organization";
-            da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
-            da.Fill(ds, "Organization");
-            strSQL = "select * from Student";
-            da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
-            da.Fill(ds, "Student");
+            SqlDataAdapter da = new SqlDataAdapter();//参数1：T-sql脚本，参数2连接数据库
+            
+            foreach (var table in tables)
+            {
+                strSQL = "select * from " + table.TableName;
+                if (table.TableName == "dbo.Faulty") 
+                {
+                    strSQL = "select * from dbo.Faculty";
+                    da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+                    da.Fill(ds, "dbo.Faculty");
+                    continue;
+                }
+                else
+                {
+                da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
+                da.Fill(ds, table.TableName);
+                }
+            }
             return ds;
         }
     }

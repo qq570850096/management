@@ -87,26 +87,26 @@
             this.添加学生ToolStripMenuItem,
             this.修改学生信息ToolStripMenuItem});
             this.学生管理ToolStripMenuItem.Name = "学生管理ToolStripMenuItem";
-            this.学生管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.学生管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.学生管理ToolStripMenuItem.Text = "学生管理";
             // 
             // 添加学生ToolStripMenuItem
             // 
             this.添加学生ToolStripMenuItem.Name = "添加学生ToolStripMenuItem";
-            this.添加学生ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.添加学生ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.添加学生ToolStripMenuItem.Text = "添加学生";
             this.添加学生ToolStripMenuItem.Click += new System.EventHandler(this.添加学生ToolStripMenuItem_Click);
             // 
             // 修改学生信息ToolStripMenuItem
             // 
             this.修改学生信息ToolStripMenuItem.Name = "修改学生信息ToolStripMenuItem";
-            this.修改学生信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.修改学生信息ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.修改学生信息ToolStripMenuItem.Text = "修改学生信息";
             // 
             // 学生查询ToolStripMenuItem
             // 
             this.学生查询ToolStripMenuItem.Name = "学生查询ToolStripMenuItem";
-            this.学生查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.学生查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.学生查询ToolStripMenuItem.Text = "学生查询";
             this.学生查询ToolStripMenuItem.Click += new System.EventHandler(this.学生查询ToolStripMenuItem_Click);
             // 
@@ -178,7 +178,7 @@
             this.dockPanel.DockBackColor = System.Drawing.SystemColors.Control;
             this.dockPanel.Location = new System.Drawing.Point(0, 24);
             this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(1416, 1021);
+            this.dockPanel.Size = new System.Drawing.Size(1515, 1120);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;

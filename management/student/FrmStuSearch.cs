@@ -17,6 +17,7 @@ namespace management
     {
         InterC ic = new InterC();
         DataClasses1DataContext DC = new DataClasses1DataContext();
+        
         DataSet mydataBaseSet = new System.Data.DataSet();
         SqlDataAdapter adapter=new SqlDataAdapter();
         DBConn conn = new DBConn();
@@ -33,6 +34,7 @@ namespace management
             {
                 listBox1.Items.Add(mydataBaseSet.Tables[i].TableName);
             }
+            
             listBox1.SelectedIndex = 0;
             Crouse.AllowUserToDeleteRows = false;
             Crouse.AllowUserToAddRows = false;
@@ -40,6 +42,7 @@ namespace management
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var tables = from t in DC.Mapping.GetTables() orderby t.TableName select t;
             DataTable selected = new System.Data.DataTable();
             int index = listBox1.SelectedIndex;
             selected = mydataBaseSet.Tables[index];
