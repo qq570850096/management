@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -66,7 +67,7 @@ namespace management
         private void changeBtn_Click(object sender, EventArgs e)
         {
             InterC ic = new InterC();
-            CNatu CN = new CNatu();
+
             DBSever.Course C = new DBSever.Course();
 
             //学号
@@ -81,29 +82,53 @@ namespace management
             C.C_Year = txtC_year.Text;
             //开设学期
             C.C_Team = txtC_term.Text;
+            
 
-            if (RB1.Checked == true)
-            {
-                CN.CNat_Num = 1;
-                CN.CNat_Name = "必修课";
-                CN.C_Num = C.C_Num;
-            }
-            if (RB2.Checked == true)
-            {
-                CN.CNat_Num = 2;
-                CN.CNat_Name = "选修课";
-                CN.C_Num = C.C_Num;
-            }
 
-            if (RB3.Checked == true)
-            {
-                CN.CNat_Num = 3;
-                CN.CNat_Name = "实践课";
-                CN.C_Num = C.C_Num;
-            }
-            string message = ic.upC(C);
-            DC.CNatu.InsertOnSubmit(CN);
-            DC.SubmitChanges();
+                        var q = DC.CNatu.Where(p => p.C_Num == C.C_Num);
+                        if (q.Count() > 0)
+                        {
+                            CNatu CN = new CNatu();
+                            
+                             CN = q.First();
+                             DC.CNatu.DeleteOnSubmit(CN);
+                             DC.SubmitChanges();
+                            //改
+                             if (RB1.Checked == true)
+                             {
+                                 CNatu a = new CNatu();
+                                 a.CNat_Num = 1;
+                                 a.CNat_Name = "必修课";
+                                 a.C_Num = C.C_Num;
+                                 DC.CNatu.InsertOnSubmit(a);
+                                 DC.SubmitChanges();
+                             }
+                             if (RB2.Checked == true)
+                             {
+                                 CNatu a = new CNatu();
+                                 a.CNat_Num = 2;
+                                 a.CNat_Name = "选修课";
+                                 a.C_Num = C.C_Num;
+                                 DC.CNatu.InsertOnSubmit(a);
+                                 DC.SubmitChanges();
+                             }
+
+                             if (RB3.Checked == true)
+                             {
+                                 CNatu a = new CNatu();
+                                 a.CNat_Num = 3;
+                                 a.CNat_Name = "实践课";
+                                 a.C_Num = C.C_Num;
+                                 DC.CNatu.InsertOnSubmit(a);
+                                 DC.SubmitChanges();
+                             }
+                             
+                        }
+
+
+
+                        string message = ic.upC(C);
+            
             MessageBox.Show(message, "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

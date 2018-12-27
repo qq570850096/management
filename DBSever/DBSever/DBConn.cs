@@ -116,6 +116,7 @@ namespace DBSever
         }
         public DataTable SC()
         {
+            
             DBConn dbconn = new DBConn();//实例化连接数据库的类的对象
             SqlConnection conn = dbconn.OpenConn();//调用对象中的打开数据库方法
             string strSQL = "select * from [dbo].[Course] inner join CNatu on CNatu.C_Num = Course.C_Num";
@@ -194,6 +195,10 @@ namespace DBSever
                     strSQL = "select * from dbo.Faculty";
                     da = new SqlDataAdapter(strSQL, conn);//参数1：T-sql脚本，参数2连接数据库
                     da.Fill(ds, "dbo.Faculty");
+                    continue;
+                }
+                if (table.TableName == "dbo.activity")
+                {
                     continue;
                 }
                 else

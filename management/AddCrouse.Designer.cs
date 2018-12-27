@@ -43,8 +43,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.DelBtn = new System.Windows.Forms.Button();
             this.changeBtn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.RB1 = new System.Windows.Forms.RadioButton();
             this.RB2 = new System.Windows.Forms.RadioButton();
             this.RB3 = new System.Windows.Forms.RadioButton();
@@ -149,7 +147,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(87, 400);
+            this.button1.Location = new System.Drawing.Point(101, 370);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 23);
             this.button1.TabIndex = 12;
@@ -159,7 +157,7 @@
             // 
             // DelBtn
             // 
-            this.DelBtn.Location = new System.Drawing.Point(237, 400);
+            this.DelBtn.Location = new System.Drawing.Point(251, 370);
             this.DelBtn.Name = "DelBtn";
             this.DelBtn.Size = new System.Drawing.Size(75, 23);
             this.DelBtn.TabIndex = 13;
@@ -169,30 +167,13 @@
             // 
             // changeBtn
             // 
-            this.changeBtn.Location = new System.Drawing.Point(162, 400);
+            this.changeBtn.Location = new System.Drawing.Point(176, 370);
             this.changeBtn.Name = "changeBtn";
             this.changeBtn.Size = new System.Drawing.Size(69, 23);
             this.changeBtn.TabIndex = 14;
             this.changeBtn.Text = "修改";
             this.changeBtn.UseVisualStyleBackColor = true;
             this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(162, 336);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 18;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(101, 344);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "任课教师";
             // 
             // RB1
             // 
@@ -235,8 +216,6 @@
             this.Controls.Add(this.RB3);
             this.Controls.Add(this.RB2);
             this.Controls.Add(this.RB1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.changeBtn);
             this.Controls.Add(this.DelBtn);
             this.Controls.Add(this.button1);
@@ -277,8 +256,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button DelBtn;
         private System.Windows.Forms.Button changeBtn;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton RB1;
         private System.Windows.Forms.RadioButton RB2;
         private System.Windows.Forms.RadioButton RB3;

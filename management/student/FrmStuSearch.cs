@@ -19,9 +19,11 @@ namespace management
         DataClasses1DataContext DC = new DataClasses1DataContext();
         
         DataSet mydataBaseSet = new System.Data.DataSet();
+        
         SqlDataAdapter adapter=new SqlDataAdapter();
         DBConn conn = new DBConn();
         BindingSource BS = new BindingSource();
+        
         public FrmStuSearch()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace management
 
         private void FrmStuSearch_Load(object sender, EventArgs e)
         {  
+            
             mydataBaseSet = ic.DS();
             for (int i = 0; i < mydataBaseSet.Tables.Count; i++)
             {
@@ -42,8 +45,16 @@ namespace management
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var tables = from t in DC.Mapping.GetTables() orderby t.TableName select t;
+            //var b = (from c in DC.Course select c.C_Num).Union(from d in DC.CNatu select d.C_Num);
+
+            
+
+            
+
+            //BS.DataSource = b;
+            //Crouse.DataSource = BS;
             DataTable selected = new System.Data.DataTable();
+            
             int index = listBox1.SelectedIndex;
             selected = mydataBaseSet.Tables[index];
             string QS = "select * from " + selected.TableName;
