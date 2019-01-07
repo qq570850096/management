@@ -28,81 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Crouse = new System.Windows.Forms.DataGridView();
-            this.C_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_score = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_term = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.Crouse = new System.Windows.Forms.DataGridView();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Crouse)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Crouse
-            // 
-            this.Crouse.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Crouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.Crouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.C_num,
-            this.C_name,
-            this.C_time,
-            this.C_score,
-            this.C_year,
-            this.C_term});
-            this.Crouse.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Crouse.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Crouse.Location = new System.Drawing.Point(0, 0);
-            this.Crouse.Name = "Crouse";
-            this.Crouse.RowTemplate.Height = 23;
-            this.Crouse.Size = new System.Drawing.Size(537, 311);
-            this.Crouse.TabIndex = 0;
-            // 
-            // C_num
-            // 
-            this.C_num.DataPropertyName = "C_Num";
-            this.C_num.HeaderText = "课号";
-            this.C_num.Name = "C_num";
-            this.C_num.ToolTipText = "课号";
-            // 
-            // C_name
-            // 
-            this.C_name.DataPropertyName = "C_Name";
-            this.C_name.HeaderText = "课程名称";
-            this.C_name.Name = "C_name";
-            this.C_name.ToolTipText = "课程名称";
-            // 
-            // C_time
-            // 
-            this.C_time.DataPropertyName = "C_Time";
-            this.C_time.HeaderText = "学时";
-            this.C_time.Name = "C_time";
-            this.C_time.ToolTipText = "学时";
-            // 
-            // C_score
-            // 
-            this.C_score.DataPropertyName = "C_Score";
-            this.C_score.HeaderText = "学分";
-            this.C_score.Name = "C_score";
-            this.C_score.ToolTipText = "学分";
-            // 
-            // C_year
-            // 
-            this.C_year.DataPropertyName = "C_Year";
-            this.C_year.HeaderText = "开设学年";
-            this.C_year.Name = "C_year";
-            this.C_year.ToolTipText = "开设学年";
-            // 
-            // C_term
-            // 
-            this.C_term.DataPropertyName = "C_Team";
-            this.C_term.HeaderText = "开设学期";
-            this.C_term.Name = "C_term";
-            this.C_term.ToolTipText = "开设学期";
             // 
             // listBox1
             // 
@@ -135,7 +71,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(172, 415);
+            this.button3.Location = new System.Drawing.Point(172, 393);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 23);
             this.button3.TabIndex = 4;
@@ -145,7 +81,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(317, 415);
+            this.button4.Location = new System.Drawing.Point(317, 393);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(89, 23);
             this.button4.TabIndex = 5;
@@ -153,11 +89,60 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // Crouse
+            // 
+            this.Crouse.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Crouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.Crouse.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Crouse.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Crouse.Location = new System.Drawing.Point(0, 0);
+            this.Crouse.Name = "Crouse";
+            this.Crouse.RowTemplate.Height = 23;
+            this.Crouse.Size = new System.Drawing.Size(537, 311);
+            this.Crouse.TabIndex = 0;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(176, 444);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(97, 17);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "只查看必修课";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(283, 444);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(97, 17);
+            this.radioButton2.TabIndex = 7;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "只查看辅修课";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(399, 438);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(114, 23);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "查看学生选课情况";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // FrmStuSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 490);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -170,23 +155,21 @@
             this.Load += new System.EventHandler(this.FrmStuSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Crouse)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView Crouse;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_score;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_year;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_term;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView Crouse;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Button button5;
 
     }
 }

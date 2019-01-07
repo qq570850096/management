@@ -44,21 +44,8 @@
     <Type Name="cou_teaching">
       <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="教师代码" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Course_cou_teaching" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
       <Association Name="Teacher_cou_teaching" Member="Teacher" ThisKey="教师代码" OtherKey="T_Num" Type="Teacher" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Course" Member="Course">
-    <Type Name="Course">
-      <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="C_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="C_Time" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="C_Score" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="C_Year" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Column Name="C_Team" Type="System.String" DbType="Char(10)" CanBeNull="true" />
-      <Association Name="Course_CNatu" Member="CNatu" ThisKey="C_Num" OtherKey="C_Num" Type="CNatu" />
-      <Association Name="Course_cou_teaching" Member="cou_teaching" ThisKey="C_Num" OtherKey="C_Num" Type="cou_teaching" />
-      <Association Name="Course_SC" Member="SC" ThisKey="C_Num" OtherKey="C_Num" Type="SC" />
+      <Association Name="Course_cou_teaching" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Faulty" Member="Faulty">
@@ -158,8 +145,8 @@
       <Column Name="S_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Grade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Course_SC" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
       <Association Name="Student_SC" Member="Student" ThisKey="S_Num" OtherKey="S_Num" Type="Student" IsForeignKey="true" />
+      <Association Name="Course_SC" Member="Course" ThisKey="C_Num" OtherKey="C_Num" Type="Course" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Student" Member="Student">
@@ -205,6 +192,20 @@
       <Column Name="mac_addr" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="last_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="last_ip" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Course" Member="Course">
+    <Type Name="Course">
+      <Column Name="C_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="C_Name" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="C_Time" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Score" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_Year" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="C_Team" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="C_Class" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="Course_CNatu" Member="CNatu" ThisKey="C_Num" OtherKey="C_Num" Type="CNatu" />
+      <Association Name="Course_cou_teaching" Member="cou_teaching" ThisKey="C_Num" OtherKey="C_Num" Type="cou_teaching" />
+      <Association Name="Course_SC" Member="SC" ThisKey="C_Num" OtherKey="C_Num" Type="SC" />
     </Type>
   </Table>
 </Database>

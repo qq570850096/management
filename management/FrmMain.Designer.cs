@@ -134,25 +134,25 @@
             // 添加社团ToolStripMenuItem
             // 
             this.添加社团ToolStripMenuItem.Name = "添加社团ToolStripMenuItem";
-            this.添加社团ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.添加社团ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.添加社团ToolStripMenuItem.Text = "添加社团";
             // 
             // 修改社团信息ToolStripMenuItem
             // 
             this.修改社团信息ToolStripMenuItem.Name = "修改社团信息ToolStripMenuItem";
-            this.修改社团信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.修改社团信息ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.修改社团信息ToolStripMenuItem.Text = "修改社团信息";
             // 
             // 社团活动ToolStripMenuItem
             // 
             this.社团活动ToolStripMenuItem.Name = "社团活动ToolStripMenuItem";
-            this.社团活动ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.社团活动ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.社团活动ToolStripMenuItem.Text = "社团活动";
             // 
             // 解散社团ToolStripMenuItem
             // 
             this.解散社团ToolStripMenuItem.Name = "解散社团ToolStripMenuItem";
-            this.解散社团ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.解散社团ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.解散社团ToolStripMenuItem.Text = "解散社团";
             // 
             // 社团查询ToolStripMenuItem
@@ -178,7 +178,7 @@
             this.dockPanel.DockBackColor = System.Drawing.SystemColors.Control;
             this.dockPanel.Location = new System.Drawing.Point(0, 24);
             this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(1656, 1261);
+            this.dockPanel.Size = new System.Drawing.Size(1689, 1294);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;

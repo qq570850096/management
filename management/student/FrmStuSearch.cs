@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,7 +49,7 @@ namespace management
             
 
             
-
+            
             //BS.DataSource = b;
             //Crouse.DataSource = BS;
             DataTable selected = new System.Data.DataTable();
@@ -66,6 +65,7 @@ namespace management
             //adapter.Fill(selected);
             BS.DataSource = selected;
             Crouse.DataSource = BS;
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -120,6 +120,50 @@ namespace management
                 MessageBox.Show(ex.Message, "保存失败");
             }
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked == true)
+            {
+                var query = from p in DC.Course
+                            where p.C_Class == "必修"
+                            select new { 课程号 = p.C_Num, 课程名称 = p.C_Name, 学分=p.C_Score, 课程类别=p.C_Class };
+                BS.DataSource = query;
+                Crouse.DataSource = BS;
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked == true)
+            {
+                var query = from p in DC.Course
+                            where p.C_Class == "辅修"
+                            select new { 课程号 = p.C_Num, 课程名称 = p.C_Name, 学分 = p.C_Score, 课程类别 = p.C_Class };
+                BS.DataSource = query;
+                Crouse.DataSource = BS;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var query = from p in DC.Course
+                        join q in DC.SC on p.C_Num equals q.C_Num
+                        select new { 课程号 = p.C_Num, 课程名称 = p.C_Name, 课程类别 = p.C_Class, 学生号 = q.S_Num, 成绩 =q.Grade};
+            var query1=from p in DC.Student
+                       join qq in query on p.S_Num equals qq.学生号
+                       select new { 课程号 = qq.课程号, 课程名称 = qq.课程名称, 课程类别 = qq.课程类别, 学生号 = qq.学生号,学生姓名=p.S_Name, 成绩 = qq.成绩 };
+            BS.DataSource = query1;
+            Crouse.DataSource = BS;
+        }
+
+        //private void button5_Click(object sender, EventArgs e)
+        //{
+        //    var query1 = from p in DC.Course
+        //                 join q in DC.CNatu on p.C_Num equals q.C_Num
+        //                 select new  { 课程号 = p.C_Num , 课程名称 = p.C_Name, 性质码= q.CNat_Num ,课程性质=q.CNat_Name};
+        //    this.Crouse.DataSource = query1;
+        //}
 
 
     }

@@ -48,9 +48,6 @@ namespace management
     partial void Insertcou_teaching(cou_teaching instance);
     partial void Updatecou_teaching(cou_teaching instance);
     partial void Deletecou_teaching(cou_teaching instance);
-    partial void InsertCourse(Course instance);
-    partial void UpdateCourse(Course instance);
-    partial void DeleteCourse(Course instance);
     partial void InsertFaulty(Faulty instance);
     partial void UpdateFaulty(Faulty instance);
     partial void DeleteFaulty(Faulty instance);
@@ -90,6 +87,9 @@ namespace management
     partial void Insertuserinfo(userinfo instance);
     partial void Updateuserinfo(userinfo instance);
     partial void Deleteuserinfo(userinfo instance);
+    partial void InsertCourse(Course instance);
+    partial void UpdateCourse(Course instance);
+    partial void DeleteCourse(Course instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -167,14 +167,6 @@ namespace management
 			get
 			{
 				return this.GetTable<cou_teaching>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Course> Course
-		{
-			get
-			{
-				return this.GetTable<Course>();
 			}
 		}
 		
@@ -279,6 +271,14 @@ namespace management
 			get
 			{
 				return this.GetTable<userinfo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Course> Course
+		{
+			get
+			{
+				return this.GetTable<Course>();
 			}
 		}
 	}
@@ -1043,9 +1043,9 @@ namespace management
 		
 		private string _教师代码;
 		
-		private EntityRef<Course> _Course;
-		
 		private EntityRef<Teacher> _Teacher;
+		
+		private EntityRef<Course> _Course;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -1059,8 +1059,8 @@ namespace management
 		
 		public cou_teaching()
 		{
-			this._Course = default(EntityRef<Course>);
 			this._Teacher = default(EntityRef<Teacher>);
+			this._Course = default(EntityRef<Course>);
 			OnCreated();
 		}
 		
@@ -1112,40 +1112,6 @@ namespace management
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_cou_teaching", Storage="_Course", ThisKey="C_Num", OtherKey="C_Num", IsForeignKey=true)]
-		public Course Course
-		{
-			get
-			{
-				return this._Course.Entity;
-			}
-			set
-			{
-				Course previousValue = this._Course.Entity;
-				if (((previousValue != value) 
-							|| (this._Course.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Course.Entity = null;
-						previousValue.cou_teaching.Remove(this);
-					}
-					this._Course.Entity = value;
-					if ((value != null))
-					{
-						value.cou_teaching.Add(this);
-						this._C_Num = value.C_Num;
-					}
-					else
-					{
-						this._C_Num = default(string);
-					}
-					this.SendPropertyChanged("Course");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teacher_cou_teaching", Storage="_Teacher", ThisKey="教师代码", OtherKey="T_Num", IsForeignKey=true)]
 		public Teacher Teacher
 		{
@@ -1180,233 +1146,37 @@ namespace management
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Course")]
-	public partial class Course : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _C_Num;
-		
-		private string _C_Name;
-		
-		private int _C_Time;
-		
-		private int _C_Score;
-		
-		private string _C_Year;
-		
-		private string _C_Team;
-		
-		private EntitySet<CNatu> _CNatu;
-		
-		private EntitySet<cou_teaching> _cou_teaching;
-		
-		private EntitySet<SC> _SC;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnC_NumChanging(string value);
-    partial void OnC_NumChanged();
-    partial void OnC_NameChanging(string value);
-    partial void OnC_NameChanged();
-    partial void OnC_TimeChanging(int value);
-    partial void OnC_TimeChanged();
-    partial void OnC_ScoreChanging(int value);
-    partial void OnC_ScoreChanged();
-    partial void OnC_YearChanging(string value);
-    partial void OnC_YearChanged();
-    partial void OnC_TeamChanging(string value);
-    partial void OnC_TeamChanged();
-    #endregion
-		
-		public Course()
-		{
-			this._CNatu = new EntitySet<CNatu>(new Action<CNatu>(this.attach_CNatu), new Action<CNatu>(this.detach_CNatu));
-			this._cou_teaching = new EntitySet<cou_teaching>(new Action<cou_teaching>(this.attach_cou_teaching), new Action<cou_teaching>(this.detach_cou_teaching));
-			this._SC = new EntitySet<SC>(new Action<SC>(this.attach_SC), new Action<SC>(this.detach_SC));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Num", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string C_Num
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_cou_teaching", Storage="_Course", ThisKey="C_Num", OtherKey="C_Num", IsForeignKey=true)]
+		public Course Course
 		{
 			get
 			{
-				return this._C_Num;
+				return this._Course.Entity;
 			}
 			set
 			{
-				if ((this._C_Num != value))
+				Course previousValue = this._Course.Entity;
+				if (((previousValue != value) 
+							|| (this._Course.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnC_NumChanging(value);
 					this.SendPropertyChanging();
-					this._C_Num = value;
-					this.SendPropertyChanged("C_Num");
-					this.OnC_NumChanged();
+					if ((previousValue != null))
+					{
+						this._Course.Entity = null;
+						previousValue.cou_teaching.Remove(this);
+					}
+					this._Course.Entity = value;
+					if ((value != null))
+					{
+						value.cou_teaching.Add(this);
+						this._C_Num = value.C_Num;
+					}
+					else
+					{
+						this._C_Num = default(string);
+					}
+					this.SendPropertyChanged("Course");
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Name", DbType="Char(10) NOT NULL", CanBeNull=false)]
-		public string C_Name
-		{
-			get
-			{
-				return this._C_Name;
-			}
-			set
-			{
-				if ((this._C_Name != value))
-				{
-					this.OnC_NameChanging(value);
-					this.SendPropertyChanging();
-					this._C_Name = value;
-					this.SendPropertyChanged("C_Name");
-					this.OnC_NameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Time", DbType="Int NOT NULL")]
-		public int C_Time
-		{
-			get
-			{
-				return this._C_Time;
-			}
-			set
-			{
-				if ((this._C_Time != value))
-				{
-					this.OnC_TimeChanging(value);
-					this.SendPropertyChanging();
-					this._C_Time = value;
-					this.SendPropertyChanged("C_Time");
-					this.OnC_TimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Score", DbType="Int NOT NULL")]
-		public int C_Score
-		{
-			get
-			{
-				return this._C_Score;
-			}
-			set
-			{
-				if ((this._C_Score != value))
-				{
-					this.OnC_ScoreChanging(value);
-					this.SendPropertyChanging();
-					this._C_Score = value;
-					this.SendPropertyChanged("C_Score");
-					this.OnC_ScoreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Year", DbType="Char(10)")]
-		public string C_Year
-		{
-			get
-			{
-				return this._C_Year;
-			}
-			set
-			{
-				if ((this._C_Year != value))
-				{
-					this.OnC_YearChanging(value);
-					this.SendPropertyChanging();
-					this._C_Year = value;
-					this.SendPropertyChanged("C_Year");
-					this.OnC_YearChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Team", DbType="Char(10)")]
-		public string C_Team
-		{
-			get
-			{
-				return this._C_Team;
-			}
-			set
-			{
-				if ((this._C_Team != value))
-				{
-					this.OnC_TeamChanging(value);
-					this.SendPropertyChanging();
-					this._C_Team = value;
-					this.SendPropertyChanged("C_Team");
-					this.OnC_TeamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_CNatu", Storage="_CNatu", ThisKey="C_Num", OtherKey="C_Num")]
-		public EntitySet<CNatu> CNatu
-		{
-			get
-			{
-				return this._CNatu;
-			}
-			set
-			{
-				this._CNatu.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_cou_teaching", Storage="_cou_teaching", ThisKey="C_Num", OtherKey="C_Num")]
-		public EntitySet<cou_teaching> cou_teaching
-		{
-			get
-			{
-				return this._cou_teaching;
-			}
-			set
-			{
-				this._cou_teaching.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_SC", Storage="_SC", ThisKey="C_Num", OtherKey="C_Num")]
-		public EntitySet<SC> SC
-		{
-			get
-			{
-				return this._SC;
-			}
-			set
-			{
-				this._SC.Assign(value);
 			}
 		}
 		
@@ -1428,42 +1198,6 @@ namespace management
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_CNatu(CNatu entity)
-		{
-			this.SendPropertyChanging();
-			entity.Course = this;
-		}
-		
-		private void detach_CNatu(CNatu entity)
-		{
-			this.SendPropertyChanging();
-			entity.Course = null;
-		}
-		
-		private void attach_cou_teaching(cou_teaching entity)
-		{
-			this.SendPropertyChanging();
-			entity.Course = this;
-		}
-		
-		private void detach_cou_teaching(cou_teaching entity)
-		{
-			this.SendPropertyChanging();
-			entity.Course = null;
-		}
-		
-		private void attach_SC(SC entity)
-		{
-			this.SendPropertyChanging();
-			entity.Course = this;
-		}
-		
-		private void detach_SC(SC entity)
-		{
-			this.SendPropertyChanging();
-			entity.Course = null;
 		}
 	}
 	
@@ -3370,9 +3104,9 @@ namespace management
 		
 		private int _Grade;
 		
-		private EntityRef<Course> _Course;
-		
 		private EntityRef<Student> _Student;
+		
+		private EntityRef<Course> _Course;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -3388,8 +3122,8 @@ namespace management
 		
 		public SC()
 		{
-			this._Course = default(EntityRef<Course>);
 			this._Student = default(EntityRef<Student>);
+			this._Course = default(EntityRef<Course>);
 			OnCreated();
 		}
 		
@@ -3461,40 +3195,6 @@ namespace management
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_SC", Storage="_Course", ThisKey="C_Num", OtherKey="C_Num", IsForeignKey=true)]
-		public Course Course
-		{
-			get
-			{
-				return this._Course.Entity;
-			}
-			set
-			{
-				Course previousValue = this._Course.Entity;
-				if (((previousValue != value) 
-							|| (this._Course.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Course.Entity = null;
-						previousValue.SC.Remove(this);
-					}
-					this._Course.Entity = value;
-					if ((value != null))
-					{
-						value.SC.Add(this);
-						this._C_Num = value.C_Num;
-					}
-					else
-					{
-						this._C_Num = default(string);
-					}
-					this.SendPropertyChanged("Course");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_SC", Storage="_Student", ThisKey="S_Num", OtherKey="S_Num", IsForeignKey=true)]
 		public Student Student
 		{
@@ -3525,6 +3225,40 @@ namespace management
 						this._S_Num = default(string);
 					}
 					this.SendPropertyChanged("Student");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_SC", Storage="_Course", ThisKey="C_Num", OtherKey="C_Num", IsForeignKey=true)]
+		public Course Course
+		{
+			get
+			{
+				return this._Course.Entity;
+			}
+			set
+			{
+				Course previousValue = this._Course.Entity;
+				if (((previousValue != value) 
+							|| (this._Course.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Course.Entity = null;
+						previousValue.SC.Remove(this);
+					}
+					this._Course.Entity = value;
+					if ((value != null))
+					{
+						value.SC.Add(this);
+						this._C_Num = value.C_Num;
+					}
+					else
+					{
+						this._C_Num = default(string);
+					}
+					this.SendPropertyChanged("Course");
 				}
 			}
 		}
@@ -4571,6 +4305,296 @@ namespace management
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Course")]
+	public partial class Course : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _C_Num;
+		
+		private string _C_Name;
+		
+		private int _C_Time;
+		
+		private int _C_Score;
+		
+		private string _C_Year;
+		
+		private string _C_Team;
+		
+		private string _C_Class;
+		
+		private EntitySet<CNatu> _CNatu;
+		
+		private EntitySet<cou_teaching> _cou_teaching;
+		
+		private EntitySet<SC> _SC;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnC_NumChanging(string value);
+    partial void OnC_NumChanged();
+    partial void OnC_NameChanging(string value);
+    partial void OnC_NameChanged();
+    partial void OnC_TimeChanging(int value);
+    partial void OnC_TimeChanged();
+    partial void OnC_ScoreChanging(int value);
+    partial void OnC_ScoreChanged();
+    partial void OnC_YearChanging(string value);
+    partial void OnC_YearChanged();
+    partial void OnC_TeamChanging(string value);
+    partial void OnC_TeamChanged();
+    partial void OnC_ClassChanging(string value);
+    partial void OnC_ClassChanged();
+    #endregion
+		
+		public Course()
+		{
+			this._CNatu = new EntitySet<CNatu>(new Action<CNatu>(this.attach_CNatu), new Action<CNatu>(this.detach_CNatu));
+			this._cou_teaching = new EntitySet<cou_teaching>(new Action<cou_teaching>(this.attach_cou_teaching), new Action<cou_teaching>(this.detach_cou_teaching));
+			this._SC = new EntitySet<SC>(new Action<SC>(this.attach_SC), new Action<SC>(this.detach_SC));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Num", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string C_Num
+		{
+			get
+			{
+				return this._C_Num;
+			}
+			set
+			{
+				if ((this._C_Num != value))
+				{
+					this.OnC_NumChanging(value);
+					this.SendPropertyChanging();
+					this._C_Num = value;
+					this.SendPropertyChanged("C_Num");
+					this.OnC_NumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Name", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string C_Name
+		{
+			get
+			{
+				return this._C_Name;
+			}
+			set
+			{
+				if ((this._C_Name != value))
+				{
+					this.OnC_NameChanging(value);
+					this.SendPropertyChanging();
+					this._C_Name = value;
+					this.SendPropertyChanged("C_Name");
+					this.OnC_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Time", DbType="Int NOT NULL")]
+		public int C_Time
+		{
+			get
+			{
+				return this._C_Time;
+			}
+			set
+			{
+				if ((this._C_Time != value))
+				{
+					this.OnC_TimeChanging(value);
+					this.SendPropertyChanging();
+					this._C_Time = value;
+					this.SendPropertyChanged("C_Time");
+					this.OnC_TimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Score", DbType="Int NOT NULL")]
+		public int C_Score
+		{
+			get
+			{
+				return this._C_Score;
+			}
+			set
+			{
+				if ((this._C_Score != value))
+				{
+					this.OnC_ScoreChanging(value);
+					this.SendPropertyChanging();
+					this._C_Score = value;
+					this.SendPropertyChanged("C_Score");
+					this.OnC_ScoreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Year", DbType="Char(10)")]
+		public string C_Year
+		{
+			get
+			{
+				return this._C_Year;
+			}
+			set
+			{
+				if ((this._C_Year != value))
+				{
+					this.OnC_YearChanging(value);
+					this.SendPropertyChanging();
+					this._C_Year = value;
+					this.SendPropertyChanged("C_Year");
+					this.OnC_YearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Team", DbType="Char(10)")]
+		public string C_Team
+		{
+			get
+			{
+				return this._C_Team;
+			}
+			set
+			{
+				if ((this._C_Team != value))
+				{
+					this.OnC_TeamChanging(value);
+					this.SendPropertyChanging();
+					this._C_Team = value;
+					this.SendPropertyChanged("C_Team");
+					this.OnC_TeamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_Class", DbType="NChar(10)")]
+		public string C_Class
+		{
+			get
+			{
+				return this._C_Class;
+			}
+			set
+			{
+				if ((this._C_Class != value))
+				{
+					this.OnC_ClassChanging(value);
+					this.SendPropertyChanging();
+					this._C_Class = value;
+					this.SendPropertyChanged("C_Class");
+					this.OnC_ClassChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_CNatu", Storage="_CNatu", ThisKey="C_Num", OtherKey="C_Num")]
+		public EntitySet<CNatu> CNatu
+		{
+			get
+			{
+				return this._CNatu;
+			}
+			set
+			{
+				this._CNatu.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_cou_teaching", Storage="_cou_teaching", ThisKey="C_Num", OtherKey="C_Num")]
+		public EntitySet<cou_teaching> cou_teaching
+		{
+			get
+			{
+				return this._cou_teaching;
+			}
+			set
+			{
+				this._cou_teaching.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_SC", Storage="_SC", ThisKey="C_Num", OtherKey="C_Num")]
+		public EntitySet<SC> SC
+		{
+			get
+			{
+				return this._SC;
+			}
+			set
+			{
+				this._SC.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CNatu(CNatu entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = this;
+		}
+		
+		private void detach_CNatu(CNatu entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = null;
+		}
+		
+		private void attach_cou_teaching(cou_teaching entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = this;
+		}
+		
+		private void detach_cou_teaching(cou_teaching entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = null;
+		}
+		
+		private void attach_SC(SC entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = this;
+		}
+		
+		private void detach_SC(SC entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = null;
 		}
 	}
 }
