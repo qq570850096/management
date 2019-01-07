@@ -152,9 +152,17 @@ namespace management
                         select new { 课程号 = p.C_Num, 课程名称 = p.C_Name, 课程类别 = p.C_Class, 学生号 = q.S_Num, 成绩 =q.Grade};
             var query1=from p in DC.Student
                        join qq in query on p.S_Num equals qq.学生号
+                       where qq.课程名称 == textBox1.Text.Trim()
                        select new { 课程号 = qq.课程号, 课程名称 = qq.课程名称, 课程类别 = qq.课程类别, 学生号 = qq.学生号,学生姓名=p.S_Name, 成绩 = qq.成绩 };
-            BS.DataSource = query1;
-            Crouse.DataSource = BS;
+            if (query1 != null)
+            {
+                BS.DataSource = query1;
+                Crouse.DataSource = BS;
+            }
+            else
+            {
+                MessageBox.Show("没有查询到有此课程的选课信息，请检查是否输入有误");
+            }
         }
 
         //private void button5_Click(object sender, EventArgs e)

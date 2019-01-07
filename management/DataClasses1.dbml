@@ -62,13 +62,6 @@
       <Association Name="College_Faulty" Member="College" ThisKey="Col_Num" OtherKey="Col_Num" Type="College" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Job" Member="Job">
-    <Type Name="Job">
-      <Column Name="J_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="J_Name" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
-      <Association Name="Job_Teacher" Member="Teacher" ThisKey="J_Num" OtherKey="J_Num" Type="Teacher" />
-    </Type>
-  </Table>
   <Table Name="dbo.Major" Member="Major">
     <Type Name="Major">
       <Column Name="M_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -179,9 +172,9 @@
       <Association Name="Teacher_cou_teaching" Member="cou_teaching" ThisKey="T_Num" OtherKey="教师代码" Type="cou_teaching" />
       <Association Name="Teacher_Organization" Member="Organization" ThisKey="T_Num" OtherKey="T_Num" Type="Organization" />
       <Association Name="Major_Teacher" Member="Major" ThisKey="M_Num" OtherKey="M_Num" Type="Major" IsForeignKey="true" />
-      <Association Name="Job_Teacher" Member="Job" ThisKey="J_Num" OtherKey="J_Num" Type="Job" IsForeignKey="true" />
       <Association Name="Faulty_Teacher" Member="Faulty" ThisKey="Fac_Num" OtherKey="Fac_Num" Type="Faulty" IsForeignKey="true" />
       <Association Name="Politics_Teacher" Member="Politics" ThisKey="P_Num" OtherKey="P_Num" Type="Politics" IsForeignKey="true" />
+      <Association Name="Job_Teacher" Member="Job" ThisKey="J_Num" OtherKey="J_Num" Type="Job" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.userinfo" Member="userinfo">
@@ -206,6 +199,13 @@
       <Association Name="Course_CNatu" Member="CNatu" ThisKey="C_Num" OtherKey="C_Num" Type="CNatu" />
       <Association Name="Course_cou_teaching" Member="cou_teaching" ThisKey="C_Num" OtherKey="C_Num" Type="cou_teaching" />
       <Association Name="Course_SC" Member="SC" ThisKey="C_Num" OtherKey="C_Num" Type="SC" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Job">
+    <Type Name="Job">
+      <Column Name="J_Num" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="J_Name" Type="System.String" DbType="Char(8) NOT NULL" CanBeNull="false" />
+      <Association Name="Job_Teacher" Member="Teacher" ThisKey="J_Num" OtherKey="J_Num" Type="Teacher" />
     </Type>
   </Table>
 </Database>

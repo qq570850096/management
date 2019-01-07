@@ -39,3 +39,6 @@ C:\management\management\management\bin\Debug\DBSever.dll
 C:\management\management\management\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
 C:\management\management\management\bin\Debug\AES.pdb
 C:\management\management\management\bin\Debug\DBSever.pdb
+C:\Users\exia\Desktop\17425037-刘永伦\项目文件\management\management\bin\Debug\management.exe.config
+C:\Users\exia\Desktop\17425037-刘永伦\项目文件\management\management\obj\x86\Debug\management.exe
+C:\Users\exia\Desktop\17425037-刘永伦\项目文件\management\management\obj\x86\Debug\management.pdb

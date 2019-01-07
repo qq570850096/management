@@ -51,9 +51,6 @@ namespace management
     partial void InsertFaulty(Faulty instance);
     partial void UpdateFaulty(Faulty instance);
     partial void DeleteFaulty(Faulty instance);
-    partial void InsertJob(Job instance);
-    partial void UpdateJob(Job instance);
-    partial void DeleteJob(Job instance);
     partial void InsertMajor(Major instance);
     partial void UpdateMajor(Major instance);
     partial void DeleteMajor(Major instance);
@@ -90,6 +87,9 @@ namespace management
     partial void InsertCourse(Course instance);
     partial void UpdateCourse(Course instance);
     partial void DeleteCourse(Course instance);
+    partial void InsertJob(Job instance);
+    partial void UpdateJob(Job instance);
+    partial void DeleteJob(Job instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -175,14 +175,6 @@ namespace management
 			get
 			{
 				return this.GetTable<Faulty>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Job> Job
-		{
-			get
-			{
-				return this.GetTable<Job>();
 			}
 		}
 		
@@ -279,6 +271,14 @@ namespace management
 			get
 			{
 				return this.GetTable<Course>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Job> Job
+		{
+			get
+			{
+				return this.GetTable<Job>();
 			}
 		}
 	}
@@ -1505,120 +1505,6 @@ namespace management
 		{
 			this.SendPropertyChanging();
 			entity.Faulty = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Job")]
-	public partial class Job : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _J_Num;
-		
-		private string _J_Name;
-		
-		private EntitySet<Teacher> _Teacher;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnJ_NumChanging(string value);
-    partial void OnJ_NumChanged();
-    partial void OnJ_NameChanging(string value);
-    partial void OnJ_NameChanged();
-    #endregion
-		
-		public Job()
-		{
-			this._Teacher = new EntitySet<Teacher>(new Action<Teacher>(this.attach_Teacher), new Action<Teacher>(this.detach_Teacher));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_Num", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string J_Num
-		{
-			get
-			{
-				return this._J_Num;
-			}
-			set
-			{
-				if ((this._J_Num != value))
-				{
-					this.OnJ_NumChanging(value);
-					this.SendPropertyChanging();
-					this._J_Num = value;
-					this.SendPropertyChanged("J_Num");
-					this.OnJ_NumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_Name", DbType="Char(8) NOT NULL", CanBeNull=false)]
-		public string J_Name
-		{
-			get
-			{
-				return this._J_Name;
-			}
-			set
-			{
-				if ((this._J_Name != value))
-				{
-					this.OnJ_NameChanging(value);
-					this.SendPropertyChanging();
-					this._J_Name = value;
-					this.SendPropertyChanged("J_Name");
-					this.OnJ_NameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Teacher", Storage="_Teacher", ThisKey="J_Num", OtherKey="J_Num")]
-		public EntitySet<Teacher> Teacher
-		{
-			get
-			{
-				return this._Teacher;
-			}
-			set
-			{
-				this._Teacher.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Teacher(Teacher entity)
-		{
-			this.SendPropertyChanging();
-			entity.Job = this;
-		}
-		
-		private void detach_Teacher(Teacher entity)
-		{
-			this.SendPropertyChanging();
-			entity.Job = null;
 		}
 	}
 	
@@ -3682,11 +3568,11 @@ namespace management
 		
 		private EntityRef<Major> _Major;
 		
-		private EntityRef<Job> _Job;
-		
 		private EntityRef<Faulty> _Faulty;
 		
 		private EntityRef<Politics> _Politics;
+		
+		private EntityRef<Job> _Job;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -3717,9 +3603,9 @@ namespace management
 			this._cou_teaching = new EntitySet<cou_teaching>(new Action<cou_teaching>(this.attach_cou_teaching), new Action<cou_teaching>(this.detach_cou_teaching));
 			this._Organization = new EntitySet<Organization>(new Action<Organization>(this.attach_Organization), new Action<Organization>(this.detach_Organization));
 			this._Major = default(EntityRef<Major>);
-			this._Job = default(EntityRef<Job>);
 			this._Faulty = default(EntityRef<Faulty>);
 			this._Politics = default(EntityRef<Politics>);
+			this._Job = default(EntityRef<Job>);
 			OnCreated();
 		}
 		
@@ -3979,40 +3865,6 @@ namespace management
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Teacher", Storage="_Job", ThisKey="J_Num", OtherKey="J_Num", IsForeignKey=true)]
-		public Job Job
-		{
-			get
-			{
-				return this._Job.Entity;
-			}
-			set
-			{
-				Job previousValue = this._Job.Entity;
-				if (((previousValue != value) 
-							|| (this._Job.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Job.Entity = null;
-						previousValue.Teacher.Remove(this);
-					}
-					this._Job.Entity = value;
-					if ((value != null))
-					{
-						value.Teacher.Add(this);
-						this._J_Num = value.J_Num;
-					}
-					else
-					{
-						this._J_Num = default(string);
-					}
-					this.SendPropertyChanged("Job");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Faulty_Teacher", Storage="_Faulty", ThisKey="Fac_Num", OtherKey="Fac_Num", IsForeignKey=true)]
 		public Faulty Faulty
 		{
@@ -4077,6 +3929,40 @@ namespace management
 						this._P_Num = default(string);
 					}
 					this.SendPropertyChanged("Politics");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Teacher", Storage="_Job", ThisKey="J_Num", OtherKey="J_Num", IsForeignKey=true)]
+		public Job Job
+		{
+			get
+			{
+				return this._Job.Entity;
+			}
+			set
+			{
+				Job previousValue = this._Job.Entity;
+				if (((previousValue != value) 
+							|| (this._Job.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Job.Entity = null;
+						previousValue.Teacher.Remove(this);
+					}
+					this._Job.Entity = value;
+					if ((value != null))
+					{
+						value.Teacher.Add(this);
+						this._J_Num = value.J_Num;
+					}
+					else
+					{
+						this._J_Num = default(string);
+					}
+					this.SendPropertyChanged("Job");
 				}
 			}
 		}
@@ -4595,6 +4481,120 @@ namespace management
 		{
 			this.SendPropertyChanging();
 			entity.Course = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Job")]
+	public partial class Job : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _J_Num;
+		
+		private string _J_Name;
+		
+		private EntitySet<Teacher> _Teacher;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnJ_NumChanging(string value);
+    partial void OnJ_NumChanged();
+    partial void OnJ_NameChanging(string value);
+    partial void OnJ_NameChanged();
+    #endregion
+		
+		public Job()
+		{
+			this._Teacher = new EntitySet<Teacher>(new Action<Teacher>(this.attach_Teacher), new Action<Teacher>(this.detach_Teacher));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_Num", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string J_Num
+		{
+			get
+			{
+				return this._J_Num;
+			}
+			set
+			{
+				if ((this._J_Num != value))
+				{
+					this.OnJ_NumChanging(value);
+					this.SendPropertyChanging();
+					this._J_Num = value;
+					this.SendPropertyChanged("J_Num");
+					this.OnJ_NumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_J_Name", DbType="Char(8) NOT NULL", CanBeNull=false)]
+		public string J_Name
+		{
+			get
+			{
+				return this._J_Name;
+			}
+			set
+			{
+				if ((this._J_Name != value))
+				{
+					this.OnJ_NameChanging(value);
+					this.SendPropertyChanging();
+					this._J_Name = value;
+					this.SendPropertyChanged("J_Name");
+					this.OnJ_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_Teacher", Storage="_Teacher", ThisKey="J_Num", OtherKey="J_Num")]
+		public EntitySet<Teacher> Teacher
+		{
+			get
+			{
+				return this._Teacher;
+			}
+			set
+			{
+				this._Teacher.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Teacher(Teacher entity)
+		{
+			this.SendPropertyChanging();
+			entity.Job = this;
+		}
+		
+		private void detach_Teacher(Teacher entity)
+		{
+			this.SendPropertyChanging();
+			entity.Job = null;
 		}
 	}
 }
